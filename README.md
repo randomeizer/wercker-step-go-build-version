@@ -1,27 +1,36 @@
-# wercker-step-go-version
+# wercker-step-go-build-version
 
 > Exports the version in the version.go file to an environment variable.
 
 ## Usage
-
-The following step will put the version in the `GO_VERSION` environment variable.
+Ensure there is a file called `version.go` in the root directory of the golang project that looks something like:
 
 ```
-- randomeizer/go-version
+package <your package>
+
+const Name = "<your app name>"
+const Version string = "v1.0.0"
+
+```
+
+
+Add the following step in the deploy stage of your wercker.yml:
+
+```
+- randomeizer/go-build-version
 ```
 
 You can also specify the name of the environment variable. The following example will export the
 version in the `APP_VERSION` environment variable.
 
 ```
-- randomeizer/go-version:
+- randomeizer/go-build-version:
     envvar: APP_VERSION
 ```
 
 ## Why
 
-This way it is possible to tag a build that is being deployed with the version specified in the
-`version.go` file.
+This way it is possible to tag a build that is being deployed with the version specified in the `version.go` file.
 
 ## Author
 
