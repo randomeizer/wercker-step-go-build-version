@@ -1,13 +1,13 @@
 #!/bin/bash
 
-VAR=$WERCKER_PACKAGE_VERSION_ENVVAR;
+VAR=$WERCKER_BUILD_VERSION_ENVVAR;
 
-if [ -z "$WERCKER_PACKAGE_VERSION_ENVVAR" ]; then
-    # If the envvar is not set, use `PACKAGE_VERSION` as variable name
-    VAR="PACKAGE_VERSION"
+if [ -z "$WERCKER_BUILD_VERSION_ENVVAR" ]; then
+    # If the envvar is not set, use `BUILD_VERSION` as variable name
+    VAR="BUILD_VERSION"
 fi  
 
 # Export the package version
-export ${VAR}=$(node $WERCKER_STEP_ROOT/index)
+export ${VAR}=$(grep "const Version " $WERCKER_STEP_ROOT/version.go | sed -E 's/.*"(.+)"$/\1/')
 
-echo "Package version ${!VAR} detected."
+echo "Build version ${!VAR} detected."

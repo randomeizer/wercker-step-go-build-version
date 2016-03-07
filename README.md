@@ -1,32 +1,34 @@
-# wercker-step-package-version
+# wercker-step-go-version
 
-> Exports the version in the package.json file to an environment variable
+> Exports the version in the version.go file to an environment variable.
 
 ## Usage
 
-The following step will put the version in the `PACKAGE_VERSION` environment variable.
+The following step will put the version in the `GO_VERSION` environment variable.
 
 ```
-- samverschueren/package-version
+- randomeizer/go-version
 ```
 
 You can also specify the name of the environment variable. The following example will export the
-version in the `VERSION` environment variable.
+version in the `APP_VERSION` environment variable.
 
 ```
-- samverschueren/package-version:
-    envvar: VERSION
+- randomeizer/go-version:
+    envvar: APP_VERSION
 ```
 
 ## Why
 
 This way it is possible to tag a build that is being deployed with the version specified in the
-`package.json` file.
+`version.go` file.
 
 ## Author
 
-- Sam Verschueren [<sam.verschueren@gmail.com>]
+- David Peterson [<david@randombits.org>]
+
+Based on [SamVerchueren/wercker-step-package-version](https://github.com/SamVerschueren/wercker-step-package-version)
 
 ## License
 
-MIT © Sam Verschueren
+[MIT](LICENSE)
