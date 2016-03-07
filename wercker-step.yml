@@ -1,8 +1,8 @@
-name: go-version
+name: go-build-version
 version: 1.0.0
 description: Exports the version specified in the version.go file as an environment variable.
 keywords:
-  - version.go
+  - go
   - golang
   - version
 properties:
