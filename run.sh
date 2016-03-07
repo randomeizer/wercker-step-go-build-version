@@ -10,7 +10,7 @@ fi
 # Export the package version
 export ${VAR}=$(grep "const Version " $WERCKER_SOURCE_DIR/version.go | sed -E 's/.*"(.+)"$/\1/')
 if [ "$?" = "0" ]; then
-  echo "Build version ${!VAR} detected."
+	echo "Build version ${!VAR} detected."
 else
 	echo "Unable to detect version number" 1>&2
 	exit 1
