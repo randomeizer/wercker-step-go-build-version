@@ -9,7 +9,7 @@ Ensure there is a file called `version.go` in the root directory of the golang p
 package <your package>
 
 const Name = "<your app name>"
-const Version string = "v1.0.0"
+const Version string = "1.0.0"
 
 ```
 
@@ -26,6 +26,26 @@ version in the `APP_VERSION` environment variable.
 ```
 - randomeizer/go-build-version:
     envvar: APP_VERSION
+```
+
+You might want to use it with [ghr](http://deeeet.com/ghr/) to release to GitHub automatically. If so, you might have a deploy section like so:
+```
+deploy:
+  steps:
+    - randomeizer/go-build-version
+    - tcnksm/ghr:
+        token: $GITHUB_TOKEN
+        input: dist
+        version: ${BUILD_VERSION}-prerelease
+        pre_release: true
+        replace: true
+  release:
+    - randomeizer/go-build-version
+    - tcnksm/ghr:
+        token: $GITHUB_TOKEN
+        input: dist
+        version: ${BUILD_VERSION}
+        replace: true
 ```
 
 ## Why
