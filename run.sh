@@ -8,6 +8,6 @@ if [ -z "$WERCKER_BUILD_VERSION_ENVVAR" ]; then
 fi  
 
 # Export the package version
-export ${VAR}=$(grep "const Version " $WERCKER_STEP_ROOT/version.go | sed -E 's/.*"(.+)"$/\1/')
+export ${VAR}=$(grep "const Version " $WERCKER_SOURCE_DIR/version.go | sed -E 's/.*"(.+)"$/\1/')
 
 echo "Build version ${!VAR} detected."
